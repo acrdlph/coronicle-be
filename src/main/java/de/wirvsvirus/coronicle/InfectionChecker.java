@@ -1,6 +1,6 @@
 package de.wirvsvirus.coronicle;
 
-import de.wirvsvirus.coronicle.db.model.InfectedTrace;
+import de.wirvsvirus.coronicle.db.model.InfectedPoint;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ public class InfectionChecker {
     private static final double MAGIC_NUMBER = 10;
 
     //TODO: optimize
-    public static boolean check(List<InfectedTrace> userTrace, List<InfectedTrace> dataBaseTrace) {
-        for (InfectedTrace userLocation : userTrace) {
-            for (InfectedTrace dataBaseLocation : dataBaseTrace) {
+    public static boolean check(List<InfectedPoint> userTrace, List<InfectedPoint> dataBaseTrace) {
+        for (InfectedPoint userLocation : userTrace) {
+            for (InfectedPoint dataBaseLocation : dataBaseTrace) {
                 if (wasInSameArea(userLocation, dataBaseLocation)) {
                     return true;
                 }
@@ -21,7 +21,7 @@ public class InfectionChecker {
         return false;
     }
 
-    private static boolean wasInSameArea(InfectedTrace userLocation, InfectedTrace dataBaseLocation) {
+    private static boolean wasInSameArea(InfectedPoint userLocation, InfectedPoint dataBaseLocation) {
         double deltaLat = Math.toRadians(userLocation.getLat() - dataBaseLocation.getLat());
         double deltaLon = Math.toRadians(userLocation.getLon() - dataBaseLocation.getLon());
         double alpha = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +

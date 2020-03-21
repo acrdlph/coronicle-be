@@ -55,16 +55,16 @@ class CoronicleControllerTest {
     void testNonInfection() {
         String baseUrl = "http://localhost:" + port;
 
-        List<InfectedTrace> infectedTraces = Collections.singletonList(new InfectedTrace(DATE_1, 50.9451, 7.2483));
-        HttpEntity<List<InfectedTrace>> infectedEntity = new HttpEntity<>(infectedTraces);
+        List<InfectedPoint> infectedTraces = Collections.singletonList(new InfectedPoint(DATE_1, 50.9451, 7.2483));
+        HttpEntity<List<InfectedPoint>> infectedEntity = new HttpEntity<>(infectedTraces);
         ResponseEntity<String> response = restTemplate.exchange(URI.create(baseUrl
                 + "/infectedtrace"), HttpMethod.POST, infectedEntity, String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("OK", response.getBody());
 
-        List<InfectedTrace> infectedTraces1 = Collections.singletonList(new InfectedTrace(DATE_1, 50.9448, 7.2485));
-        HttpEntity<List<InfectedTrace>> infectedEntity1 = new HttpEntity<>(infectedTraces1);
+        List<InfectedPoint> infectedTraces1 = Collections.singletonList(new InfectedPoint(DATE_1, 50.9448, 7.2485));
+        HttpEntity<List<InfectedPoint>> infectedEntity1 = new HttpEntity<>(infectedTraces1);
 
         ResponseEntity<Boolean> checkResponse = restTemplate.exchange(URI.create(baseUrl
                 + "/checktrace"), HttpMethod.POST, infectedEntity1, Boolean.class);

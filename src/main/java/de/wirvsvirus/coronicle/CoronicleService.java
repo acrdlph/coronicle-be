@@ -22,7 +22,7 @@ public class CoronicleService {
 	 */
 	public boolean checkTrace(List<InfectedPoint> userTrace) {
 		//Wo anders hinverschieben? wird erst später benötigt
-		List<InfectedTrace> dataBaseTrace = infectedTraceRepository.findInfectedTracesByTimeGreaterThanEqual(userTrace.get(0).getTime());
+		List<InfectedPoint> dataBaseTrace = infectedTraceRepository.findInfectedTracesByTimeGreaterThanEqual(userTrace.get(0).getTime());
 		return InfectionChecker.check(userTrace, dataBaseTrace);
 	}
 }
