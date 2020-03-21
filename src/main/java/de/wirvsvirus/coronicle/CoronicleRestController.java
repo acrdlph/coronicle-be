@@ -12,12 +12,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class CoronicleRestController {
 
 	@Autowired
-	InfectedTraceRepository infectedTraceRepository;
+	private CoronicleService coronicleService;
 
+	/**
+	 * Should be used to submit a GPS trace of infected persons.
+	 */
 	@PostMapping("/infectedtrace")
-	public String saveTrace(@RequestBody List<InfectedTrace> traces) {
-		infectedTraceRepository.saveAll(traces);
+	public String saveTrace(@RequestBody List<InfectedTrace> trace) {
+		coronicleService.saveInfectedTrace(trace);
 		return "OK";
+	}
+
+	/**
+	 * Checks the given trace against the database for contact to infected persons.
+	 */
+	@PostMapping("/checktrace")
+	public Boolean checkTrace(@RequestBody List<InfectedTrace> trace) {
+		return coronicleService.checkTrace(trace);
 	}
 
 }
