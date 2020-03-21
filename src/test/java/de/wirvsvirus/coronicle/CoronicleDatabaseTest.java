@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
 
-import de.wirvsvirus.coronicle.db.model.InfectedTrace;
+import de.wirvsvirus.coronicle.db.model.InfectedPoint;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -17,17 +17,17 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class CoronicleDatabaseTest {
 
 	@Autowired
-	private InfectedTraceRepository infectedTraceRepository;
+	private InfectedPointRepository infectedTraceRepository;
 
 	@Test
 	public void saveAndRetrieveInfectedTrace() {
 
 		Instant now = Instant.now();
 		LocalDateTime time = LocalDateTime.ofInstant(now, ZoneOffset.UTC);
-		InfectedTrace infectedTrace = new InfectedTrace(time, 45.5, 13.5);
+		InfectedPoint infectedTrace = new InfectedPoint(time, 45.5, 13.5);
 		infectedTraceRepository.save(infectedTrace);
 
-		List<InfectedTrace> retrievedTraces = infectedTraceRepository.findInfectedTracesByTimeGreaterThanEqual(
+		List<InfectedPoint> retrievedTraces = infectedTraceRepository.findInfectedTracesByTimeGreaterThanEqual(
 				time);
 
 		assertNotNull(retrievedTraces);
