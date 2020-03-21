@@ -11,16 +11,16 @@ public class InfectedTrace {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 
 	@Column(name = "time", nullable = false)
 	private LocalDateTime time;
 
 	@Column(name = "lat", nullable = false)
-	private Double lat;
+	private double lat;
 
 	@Column(name = "lon", nullable = false)
-	private Double lon;
+	private double lon;
 
 	public InfectedTrace() {
 	}
@@ -31,11 +31,11 @@ public class InfectedTrace {
 		this.lon = lon;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -47,35 +47,31 @@ public class InfectedTrace {
 		this.time = time;
 	}
 
-	public Double getLat() {
+	public double getLat() {
 		return lat;
 	}
 
-	public void setLat(Double lat) {
+	public void setLat(double lat) {
 		this.lat = lat;
 	}
 
-	public Double getLon() {
+	public double getLon() {
 		return lon;
 	}
 
-	public void setLon(Double lon) {
+	public void setLon(double lon) {
 		this.lon = lon;
 	}
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (!(o instanceof InfectedTrace)) {
-			return false;
-		}
+		if (this == o) return true;
+		if (!(o instanceof InfectedTrace)) return false;
 		InfectedTrace that = (InfectedTrace) o;
-		return id.equals(that.id) &&
-				time.equals(that.time) &&
-				lat.equals(that.lat) &&
-				lon.equals(that.lon);
+		return id == that.id &&
+				Double.compare(that.lat, lat) == 0 &&
+				Double.compare(that.lon, lon) == 0 &&
+				Objects.equals(time, that.time);
 	}
 
 	@Override
