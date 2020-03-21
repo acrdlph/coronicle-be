@@ -6,7 +6,7 @@ import java.time.Month;
 import java.util.Collections;
 import java.util.List;
 
-import de.wirvsvirus.coronicle.db.model.InfectedTrace;
+import de.wirvsvirus.coronicle.db.model.InfectedPoint;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,8 +34,8 @@ class CoronicleControllerTest {
     void testPostTrace() {
         String baseUrl = "http://localhost:" + port;
 
-        List<InfectedTrace> infectedTraces = Collections.singletonList(new InfectedTrace(DATE_1, 45.5, 13.5));
-        HttpEntity<List<InfectedTrace>> infectedEntity = new HttpEntity<>(infectedTraces);
+        List<InfectedPoint> infectedTraces = Collections.singletonList(new InfectedPoint(DATE_1, 45.5, 13.5));
+        HttpEntity<List<InfectedPoint>> infectedEntity = new HttpEntity<>(infectedTraces);
         ResponseEntity<String> response = restTemplate.exchange(URI.create(baseUrl
                 + "/infectedtrace"), HttpMethod.POST, infectedEntity, String.class);
 

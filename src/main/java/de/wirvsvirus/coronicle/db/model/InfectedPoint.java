@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "infectedtraces")
-public class InfectedTrace {
+public class InfectedPoint {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +22,10 @@ public class InfectedTrace {
 	@Column(name = "lon", nullable = false)
 	private double lon;
 
-	public InfectedTrace() {
+	public InfectedPoint() {
 	}
 
-	public InfectedTrace(LocalDateTime time, Double lat, Double lon) {
+	public InfectedPoint(LocalDateTime time, Double lat, Double lon) {
 		this.time = time;
 		this.lat = lat;
 		this.lon = lon;
@@ -66,8 +66,8 @@ public class InfectedTrace {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof InfectedTrace)) return false;
-		InfectedTrace that = (InfectedTrace) o;
+		if (!(o instanceof InfectedPoint)) return false;
+		InfectedPoint that = (InfectedPoint) o;
 		return id == that.id &&
 				Double.compare(that.lat, lat) == 0 &&
 				Double.compare(that.lon, lon) == 0 &&

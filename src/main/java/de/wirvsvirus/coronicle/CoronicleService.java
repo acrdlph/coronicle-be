@@ -2,7 +2,7 @@ package de.wirvsvirus.coronicle;
 
 import java.util.List;
 
-import de.wirvsvirus.coronicle.db.model.InfectedTrace;
+import de.wirvsvirus.coronicle.db.model.InfectedPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 public class CoronicleService {
 
 	@Autowired
-	InfectedTraceRepository infectedTraceRepository;
+	InfectedPointRepository infectedTraceRepository;
 
-	public void saveInfectedTrace(List<InfectedTrace> trace) {
+	public void saveInfectedTrace(List<InfectedPoint> trace) {
 		infectedTraceRepository.saveAll(trace);
 	}
 
@@ -20,7 +20,7 @@ public class CoronicleService {
 	 * @param userTrace the trace to check against the database of infected traces
 	 * @return true if there has been contact, false otherwise
 	 */
-	public boolean checkTrace(List<InfectedTrace> userTrace) {
+	public boolean checkTrace(List<InfectedPoint> userTrace) {
 		//Wo anders hinverschieben? wird erst später benötigt
 		List<InfectedTrace> dataBaseTrace = infectedTraceRepository.findInfectedTracesByTimeGreaterThanEqual(userTrace.get(0).getTime());
 		return InfectionChecker.check(userTrace, dataBaseTrace);
