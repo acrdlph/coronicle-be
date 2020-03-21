@@ -27,6 +27,8 @@
 		<flyway.version>6.3.0</flyway.version>
 	</properties>
 
+	<packaging>war</packaging>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
