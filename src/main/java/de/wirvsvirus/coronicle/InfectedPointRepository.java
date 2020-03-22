@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface InfectedPointRepository extends CrudRepository<InfectedPoint, Long> {
 
-	List<InfectedPoint> findInfectedTracesByTimeGreaterThanEqual(LocalDateTime time);
+	List<InfectedPoint> findInfectedTracesByTimeGreaterThanEqual(LocalDateTime timestamp);
 }
