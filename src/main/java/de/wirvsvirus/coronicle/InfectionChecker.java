@@ -25,7 +25,7 @@ public class InfectionChecker {
 
     private static boolean wasInSameArea(InfectedPoint userLocation, InfectedPoint dataBaseLocation) {
         double deltaLat = Math.toRadians(userLocation.getLat() - dataBaseLocation.getLat());
-        double deltaLon = Math.toRadians(userLocation.getLng() - dataBaseLocation.getLng());
+        double deltaLon = Math.toRadians(userLocation.getLon() - dataBaseLocation.getLon());
         double alpha = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
                 Math.cos(Math.toRadians(userLocation.getLat())) * Math.cos(Math.toRadians(dataBaseLocation.getLat()))
                         * Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2);

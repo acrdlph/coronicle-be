@@ -28,7 +28,7 @@ public class InfectedPoint {
 	public InfectedPoint(LocalDateTime time, Double lat, Double lon) {
 		this.time = time;
 		this.lat = lat;
-		this.lng = lon;
+		this.lon = lon;
 	}
 
 	public int getId() {
@@ -56,11 +56,11 @@ public class InfectedPoint {
 	}
 
 	public double getLon() {
-		return lng;
+		return lon;
 	}
 
 	public void setLon(double lon) {
-		this.lng = lon;
+		this.lon = lon;
 	}
 
 	@Override
@@ -70,13 +70,13 @@ public class InfectedPoint {
 		InfectedPoint that = (InfectedPoint) o;
 		return id == that.id &&
 				Double.compare(that.lat, lat) == 0 &&
-				Double.compare(that.lng, lng) == 0 &&
+				Double.compare(that.lon, lon) == 0 &&
 				Objects.equals(time, that.time);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, time, lat, lng);
+		return Objects.hash(id, time, lat, lon);
 	}
 }
 
