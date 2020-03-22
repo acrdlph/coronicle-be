@@ -19,16 +19,16 @@ public class InfectedPoint {
 	@Column(name = "lat", nullable = false)
 	private double lat;
 
-	@Column(name = "lng", nullable = false)
-	private double lng;
+	@Column(name = "lon", nullable = false)
+	private double lon;
 
 	public InfectedPoint() {
 	}
 
-	public InfectedPoint(LocalDateTime time, Double lat, Double lng) {
+	public InfectedPoint(LocalDateTime time, Double lat, Double lon) {
 		this.time = time;
 		this.lat = lat;
-		this.lng = lng;
+		this.lng = lon;
 	}
 
 	public int getId() {
@@ -55,11 +55,11 @@ public class InfectedPoint {
 		this.lat = lat;
 	}
 
-	public double getLng() {
+	public double getLon() {
 		return lng;
 	}
 
-	public void setLng(double lon) {
+	public void setLon(double lon) {
 		this.lng = lon;
 	}
 
