@@ -23,12 +23,12 @@ public class CoronicleDatabaseTest {
 	public void saveAndRetrieveInfectedTrace() {
 
 		Instant now = Instant.now();
-		LocalDateTime time = LocalDateTime.ofInstant(now, ZoneOffset.UTC);
-		InfectedPoint infectedTrace = new InfectedPoint(time, 45.5, 13.5);
+		LocalDateTime timestamp = LocalDateTime.ofInstant(now, ZoneOffset.UTC);
+		InfectedPoint infectedTrace = new InfectedPoint(timestamp, 45.5, 13.5);
 		infectedTraceRepository.save(infectedTrace);
 
 		List<InfectedPoint> retrievedTraces = infectedTraceRepository.findInfectedTracesByTimeGreaterThanEqual(
-				time);
+				timestamp);
 
 		assertNotNull(retrievedTraces);
 		assertEquals(1, retrievedTraces.size());

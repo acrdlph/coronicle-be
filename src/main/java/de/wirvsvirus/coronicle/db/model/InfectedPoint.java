@@ -13,8 +13,8 @@ public class InfectedPoint {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "time", nullable = false)
-	private LocalDateTime time;
+	@Column(name = "timestamp", nullable = false)
+	private LocalDateTime timestamp;
 
 	@Column(name = "lat", nullable = false)
 	private double lat;
@@ -25,8 +25,8 @@ public class InfectedPoint {
 	public InfectedPoint() {
 	}
 
-	public InfectedPoint(LocalDateTime time, Double lat, Double lng) {
-		this.time = time;
+	public InfectedPoint(LocalDateTime timestamp, Double lat, Double lng) {
+		this.timestamp = timestamp;
 		this.lat = lat;
 		this.lng = lng;
 	}
@@ -39,12 +39,12 @@ public class InfectedPoint {
 		this.id = id;
 	}
 
-	public LocalDateTime getTime() {
-		return time;
+	public LocalDateTime getTimestamp() {
+		return timestamp;
 	}
 
-	public void setTime(LocalDateTime time) {
-		this.time = time;
+	public void setTimestamp(LocalDateTime time) {
+		this.timestamp = time;
 	}
 
 	public double getLat() {
@@ -71,12 +71,12 @@ public class InfectedPoint {
 		return id == that.id &&
 				Double.compare(that.lat, lat) == 0 &&
 				Double.compare(that.lng, lng) == 0 &&
-				Objects.equals(time, that.time);
+				Objects.equals(timestamp, that.timestamp);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, time, lat, lng);
+		return Objects.hash(id, timestamp, lat, lng);
 	}
 }
 
