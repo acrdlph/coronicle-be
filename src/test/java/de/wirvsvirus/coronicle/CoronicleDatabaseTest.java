@@ -27,8 +27,7 @@ public class CoronicleDatabaseTest {
 		InfectedPoint infectedTrace = new InfectedPoint(timestamp, 45.5, 13.5);
 		infectedTraceRepository.save(infectedTrace);
 
-		List<InfectedPoint> retrievedTraces = infectedTraceRepository.findInfectedTracesByTimeGreaterThanEqual(
-				timestamp);
+		List<InfectedPoint> retrievedTraces = infectedTraceRepository.findInfectedTracesByTimeGreaterThanEqual(timestamp);
 
 		assertNotNull(retrievedTraces);
 		assertEquals(1, retrievedTraces.size());
