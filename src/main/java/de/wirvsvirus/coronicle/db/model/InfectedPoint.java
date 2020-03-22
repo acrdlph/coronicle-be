@@ -14,7 +14,7 @@ public class InfectedPoint {
 	private int id;
 
 	@Column(name = "timestamp", nullable = false)
-	private LocalDateTime timestamp;
+	private LocalDateTime time;
 
 	@Column(name = "lat", nullable = false)
 	private double lat;
@@ -25,8 +25,8 @@ public class InfectedPoint {
 	public InfectedPoint() {
 	}
 
-	public InfectedPoint(LocalDateTime timestamp, Double lat, Double lng) {
-		this.timestamp = timestamp;
+	public InfectedPoint(LocalDateTime time, Double lat, Double lng) {
+		this.time = time;
 		this.lat = lat;
 		this.lng = lng;
 	}
@@ -39,12 +39,12 @@ public class InfectedPoint {
 		this.id = id;
 	}
 
-	public LocalDateTime getTimestamp() {
-		return timestamp;
+	public LocalDateTime getTime() {
+		return time;
 	}
 
-	public void setTimestamp(LocalDateTime time) {
-		this.timestamp = time;
+	public void setTime(LocalDateTime timestamp) {
+		this.time = timestamp;
 	}
 
 	public double getLat() {
@@ -71,12 +71,12 @@ public class InfectedPoint {
 		return id == that.id &&
 				Double.compare(that.lat, lat) == 0 &&
 				Double.compare(that.lng, lng) == 0 &&
-				Objects.equals(timestamp, that.timestamp);
+				Objects.equals(time, that.time);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, timestamp, lat, lng);
+		return Objects.hash(id, time, lat, lng);
 	}
 }
 
